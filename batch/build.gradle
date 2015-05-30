@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+group = 'com.gmail.volodymyrdotsenko.jee.batch'
+version = '1.0-SNAPSHOT'
+ 
+description = "JEE batch samples"
+ 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+ 
+ 
+repositories {
+ 
+     maven { url "http://repo.maven.apache.org/maven2" }
+     mavenCentral()
+     mavenLocal()
+}
+dependencies {
+    providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+}
