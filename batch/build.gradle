@@ -11,6 +11,13 @@ description = "JEE batch samples"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
  
+    ext.libraryVersions = [
+            javaee                  : '7.0',
+            wildfly                 : '8.2.0.Final',
+            junit                   : '4.11',
+            arquillian              : '1.1.8.Final',
+            shrinkWrapResolverGradle: '2.2.0-beta-1'
+    ]
  
 repositories {
  
@@ -20,4 +27,11 @@ repositories {
 }
 dependencies {
     providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+
+    //arquillian
+    //testCompile "junit:junit:${libraryVersions.junit}"
+    testCompile "org.jboss.arquillian.junit:arquillian-junit-container:${libraryVersions.arquillian}"
+    testCompile "org.jboss.arquillian.protocol:arquillian-protocol-servlet:${libraryVersions.arquillian}"
+    testCompile "org.wildfly:wildfly-arquillian-container-managed:${libraryVersions.wildfly}"
+    testCompile "org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:${libraryVersions.shrinkWrapResolverGradle}"
 }
