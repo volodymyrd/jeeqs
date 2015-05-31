@@ -13,7 +13,7 @@
 	<script>
 		$(function() {
 			$("#startjobId").on('click', function(event) {
-				$.post("batch/hello", function(data) {
+				$.get("batch/hello", function(data) {
 					console.log(data);
 				});
 			});

@@ -26,10 +26,10 @@ repositories {
      mavenLocal()
 }
 dependencies {
-    providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+    providedCompile "javax:javaee-api:${libraryVersions.javaee}"
 
     //arquillian
-    //testCompile "junit:junit:${libraryVersions.junit}"
+    testCompile "junit:junit:${libraryVersions.junit}"
     testCompile "org.jboss.arquillian.junit:arquillian-junit-container:${libraryVersions.arquillian}"
     testCompile "org.jboss.arquillian.protocol:arquillian-protocol-servlet:${libraryVersions.arquillian}"
     testCompile "org.wildfly:wildfly-arquillian-container-managed:${libraryVersions.wildfly}"
