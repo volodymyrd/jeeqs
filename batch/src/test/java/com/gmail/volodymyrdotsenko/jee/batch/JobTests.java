@@ -50,7 +50,9 @@ public class JobTests {
 	@Test
 	public void testChunkSimple() throws Exception {
 		JobOperator jobOperator = BatchRuntime.getJobOperator();
-		Long executionId = jobOperator.start("job1", new Properties());
+		Properties prop = new Properties();
+		prop.put("log_file_name", "mylog.log");
+		Long executionId = jobOperator.start("job1", prop);
 		JobExecution jobExecution = jobOperator.getJobExecution(executionId);
 
 		jobExecution = BatchTestHelper.keepTestAlive(jobExecution);

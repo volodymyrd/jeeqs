@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<job id="job1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<job id="job1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
 	version="1.0">
+	<properties>
+		<property name="log_file_name" value="log1.txt" />
+	</properties>
 	<step id="step1">
 		<chunk item-count="3">
 			<reader ref="job1ItemReader" />
