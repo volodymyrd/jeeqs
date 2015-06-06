@@ -66,22 +66,19 @@ public class BillPartitionMapper implements PartitionMapper {
 				 */
 				Properties[] props = new Properties[getPartitions()];
 
-//				for (int i = 0; i < getPartitions(); i++) {
-//					props[i] = new Properties();
-//					props[i].put("firstItem", i * partItems);
-//					/* Last partition gets the remainder elements */
-//					if (i == getPartitions() - 1) {
-//						props[i].put("numItems", partItems + remItems);
-//					} else {
-//						props[i].put("numItems", partItems);
-//					}
-//				}
-				props[0] = new Properties();
-				props[0].put("firstItem", 1);
-				props[0].put("numItems", 30);
-				props[1] = new Properties();
-				props[1].put("firstItem", 31);
-				props[1].put("numItems", 50);
+				for (int i = 0; i < getPartitions(); i++) {
+					props[i] = new Properties();
+					props[i].setProperty("firstItem",
+							String.valueOf(i * partItems));
+					/* Last partition gets the remainder elements */
+					if (i == getPartitions() - 1) {
+						props[i].setProperty("numItems",
+								String.valueOf(partItems + remItems));
+					} else {
+						props[i].setProperty("numItems",
+								String.valueOf(partItems));
+					}
+				}
 				return props;
 			}
 		};

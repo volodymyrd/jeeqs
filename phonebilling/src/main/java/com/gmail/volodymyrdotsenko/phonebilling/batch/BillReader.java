@@ -54,8 +54,8 @@ public class BillReader implements ItemReader {
 		System.out.println(jobCtx.getProperties());
 
 		/* Get the range of items to work on in this partition */
-		long firstItem0 = ((Long) partParams.get("firstItem")).longValue();
-		long numItems0 = ((Long) partParams.get("numItems")).longValue();
+		long firstItem0 = new Long(startProp);//((Long) partParams.get("firstItem")).longValue();
+		long numItems0 = new Long(endProp);//((Long) partParams.get("numItems")).longValue();
 
 		if (ckpt == null) {
 			/* Create a checkpoint object for this partition */
