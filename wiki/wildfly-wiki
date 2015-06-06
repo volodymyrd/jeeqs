@@ -1,0 +1,48 @@
+Install module as a driver
+oracle
+1. Create directory [WH-HOME]\modules\system\layers\base\com\oracle\ojdbc6\main
+2. Copy ojdbc6.jar to this directory
+3. Create module.xml file in this directory
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<module xmlns="urn:jboss:module:1.3" name="com.oracle.ojdbc6"> 
+  <resources> 
+    <resource-root path="ojdbc6.jar"/> 
+  </resources> 
+  <dependencies> 
+    <module name="javax.api"/> 
+    <module name="javax.transaction.api"/> 
+  </dependencies> 
+</module>
+4. Start WildFly-8: [WF-HOME]\bin\standalone.bat
+5. Start Management CLI: [WF-HOME]\bin\jboss-cli.bat
+6. The Management CLI session will be the following (red is your input)
+C:\Servers\wildfly-8.2.0.Final\bin>jboss-cli.bat 
+You are disconnected at the moment. Type 'connect' to connect to the server or 'help' for the list of supported commands. 
+[disconnected /] connect
+[standalone@localhost:9990 /] /subsystem=datasources/jdbc-driver=ojdbc6:add(driver-name=ojdbc6,driver-module-name=com.oracle.ojdbc6)
+[ï»"outcome" => "success"] 
+[standalone@localhost:9990 /] quit
+Press any key to continue . . .
+
+mysql
+
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.0" name="com.mysql">
+  <resources>
+    <resource-root path="mysql-connector-java-5.1.15.jar"/>
+  </resources>
+  <dependencies>
+    <module name="javax.api"/>
+    <module name="javax.transaction.api"/>
+  </dependencies>
+</module>
+The module name, com.mysql, should match the directory structure for the module.
+
+Start the Server.
+Start the Management CLI.
+Run the following CLI command to add the JDBC driver module as a driver:
+/subsystem=datasources/jdbc-driver=DRIVER_NAME:add(driver-name=DRIVER_NAME,driver-module-name=MODULE_NAME,driver-xa-datasource-class-name=XA_DATASOURCE_CLASS_NAME)
+Example 6.2. Example CLI Command
+
+/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)

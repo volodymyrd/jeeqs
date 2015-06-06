@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+group = 'org.javaee7.chunk-mapper'
+version = '1.0-SNAPSHOT'
+ 
+description = "JEE batch samples"
+ 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+ 
+    ext.libraryVersions = [
+            javaee                  : '7.0',
+            wildfly                 : '8.2.0.Final',
+            junit                   : '4.11',
+            arquillian              : '1.1.8.Final',
+            shrinkWrapResolverGradle: '2.2.0-beta-1'
+    ]
+ 
+repositories {
+ 
+     maven { url "http://repo.maven.apache.org/maven2" }
+     mavenCentral()
+     mavenLocal()
+}
+dependencies {
+    providedCompile "javax:javaee-api:${libraryVersions.javaee}"
+
+    //arquillian
+    testCompile "junit:junit:${libraryVersions.junit}"
+    testCompile "org.jboss.arquillian.junit:arquillian-junit-container:${libraryVersions.arquillian}"
+    testCompile "org.jboss.arquillian.protocol:arquillian-protocol-servlet:${libraryVersions.arquillian}"
+    testCompile "org.wildfly:wildfly-arquillian-container-managed:${libraryVersions.wildfly}"
+    testCompile "org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:${libraryVersions.shrinkWrapResolverGradle}"
+}
