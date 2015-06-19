@@ -1,0 +1,3 @@
+#if adress already in use:
+sudo netstat -ltnp | grep ':8789'
+sudo kill -9 11829
